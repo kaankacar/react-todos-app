@@ -1,25 +1,54 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import ToDoList from "./ToDoList";
+import ToDoForm from './ToDoForm';
 import './App.css';
+import axios from "axios";
 
 function App() {
+
+  const [toDoList, setToDoList] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  const fetchData = async () => {
+    const { data } = await axios.get("https://632578f270c3fa390f88d272.mockapi.io/todos")
+
+    setToDoList(data)
+  }
+
+  const handleToggle = (id) => {
+    let mapped = toDoList.map(content => {
+      return content.id === Number(id) ? { ...content, isCompleted: !content.isCompleted } : { ...content };
+    });
+    setToDoList(mapped);
+  }
+
+  const handleFilter = () => {
+    let filtered = toDoList.filter(content => {
+      return !content.isCompleted;
+    });
+    setToDoList(filtered);
+  }
+
+  const addTask = (userInput) => {
+    let copy = [...toDoList];
+    copy = [...copy, { id: toDoList.length + 1, content: userInput, isCompleted: false }];
+    setToDoList(copy);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>To Do List</h1>
       </header>
+      
+      <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter} />
+      <ToDoForm addTask={addTask} />
     </div>
   );
 }
+
 
 export default App;
