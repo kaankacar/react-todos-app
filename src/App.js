@@ -3,8 +3,19 @@ import ToDoList from "./ToDoList";
 import ToDoForm from './ToDoForm';
 import './App.css';
 import axios from "axios";
+// import User from "./User";
 
 function App() {
+
+  const [username, setUsername] = useState("Your Username Should Be Here.")
+
+  const changeUsername = () => {
+    setUsername(prompt("What Is Your Age?"));
+  }
+
+  useEffect(changeUsername, []);
+  localStorage.setItem("username", username)
+
 
   const [toDoList, setToDoList] = useState([]);
 
@@ -41,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>To Do List</h1>
+        <h1>Welcome to your To Do App {username}</h1>
       </header>
       
       <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter} />
