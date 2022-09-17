@@ -48,48 +48,6 @@ function App() {
     setToDoList(copy);
   }
 
-  // const changetheme = () => {
-  //   var element = document.body;
-  //   element.classList.toggle("dark-mode");
-  // }
-
-  // const currenttheme = localStorage.getItem("darkmode");
-  // if (currenttheme == true) {
-  //   document.body.classList.add("dark-mode")
-  // }
-
-  // if (document.body.classList.contains("dark-mode")) {
-  //   localStorage.setItem("darkmode",true)
-  // } else {
-  //   localStorage.setItem("darkmode",false)
-  // }
-
-  //  localStorage.setItem("darkmode",true)
-
-  //  if (localStorage.getItem("darkmode") == true){
-  //   document.body.style.backgroundColor = "white"
-  //   document.body.style.color = "black"
-  //  } else {
-  //   document.body.style.backgroundColor = "black"
-  //   document.body.style.color = "black"
-  //  }
-
-  // const btn = document.querySelector(".btntoggle");
-
-  // const currentTheme = localStorage.getItem("theme");
-  // if (currentTheme == "dark") {
-  //   document.body.classList.add("dark-mode");
-  // }
-
-  // btn.addEventListener("click", function () {
-  //   document.body.classList.toggle("dark-mode");
-
-  //   let theme = "light";
-  //   if (document.body.classList.contains("dark-mode")) {
-  //     theme = "dark";
-  //   }
-  //   localStorage.setItem("theme", theme);
-  // });
 
   const currentTheme = localStorage.getItem("theme");
   if (currentTheme == "dark") {
