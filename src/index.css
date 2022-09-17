@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  color: black;
 }
 
 code {
@@ -18,4 +20,9 @@ code {
 
 .strike {
   text-decoration: line-through;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
 }

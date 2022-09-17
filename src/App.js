@@ -48,12 +48,17 @@ function App() {
     setToDoList(copy);
   }
 
+  const changetheme = () => {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+ }
+
   return (
     <div className="App">
-      <header>
+      <header className='m-3'>
         <h1>Welcome to your To Do App {username}</h1>
       </header>
-      
+      <div className='row justify-content-end fixed-top'><button className='border rounded-pill col-3' onClick={changetheme}> Click to Change Modes(Light/Dark) </button></div>
       <ToDoList toDoList={toDoList} handleToggle={handleToggle} handleFilter={handleFilter} />
       <ToDoForm addTask={addTask} />
     </div>
